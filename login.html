@@ -44,15 +44,16 @@
 
 
                     <div class="form-group">
-                        <input type="username" class="form-control" placeholder="&#xf007;  Username" id="email">
-                        <span class="text-danger need-input" id=""></span>
+                        <input type="username" class="form-control" placeholder="&#xf007;  Username" id="user">
+
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="&#xf023;  Password" id="pwd">
-                        <span class="text-danger need-input" id=""></span>
+                        <input type="password" class="form-control" placeholder="&#xf023;  Password" id="pass">
+                        <p style="color: red;" id="need-input"></p>
+
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block" id="btn-login" style="background-color: #00ce81; font-size: 18px; ">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="btn-login" style="background-color: #00ce81; font-size: 18px; " onclick="clickLogin()">Login</button>
 
 
                 </div>
@@ -61,7 +62,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer" style=" text-align: center;
                 justify-content: center; margin-top: 34px; background-color: #ecf0f1;">
-                    <h6 style="color: #b1aeaf;">Forgot Password?</h6>
+                    <h6 style="color: #b1aeaf;" onclick="clickForgot()" id="passChange">Forgot Password?</h6>
                 </div>
 
             </div>
@@ -69,7 +70,33 @@
     </div>
 
 
-    <script src="/script.js">
+    <script>
+        var a = 'admin';
+        var b = 'admin';
+        var needInput = document.getElementById('need-input');
+        var loginSystem = document.getElementById('login-system');
+        var btnLogin = document.getElementById('btn-login');
+        var success = document.getElementById('success');
+        var passChange = document.getElementById('passChange');
+
+        function clickLogin() {
+            var userName = document.getElementById("user").value;
+            var passWord = document.getElementById("pass").value;
+            var modal = document.getElementById('myModal');
+            if (userName === '' && passWord === '') {
+
+                needInput.innerText = 'Fill this box!';
+
+            } else if (userName != a || passWord != b) {
+                needInput.innerText = 'Wrong password or username!'
+
+            } else if (userName == a && passWord == b) {
+                // modal.setAttribute('style', 'display:none');
+                needInput.style.color = 'green';
+                needInput.innerText = ' Login success';
+                loginSystem.innerText = 'LOGIN SUCCESS';
+            }
+        }
     </script>
 </body>
 
