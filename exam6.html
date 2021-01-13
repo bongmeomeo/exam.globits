@@ -173,9 +173,11 @@
                 needInput2.style.color = 'green';
                 needInput2.innerText = 'Password changed!';
                 b = newPass.value;
+                modal2.tongle();
             }
         }
         loginBack.onclick = function() {
+            needInput2.innerText = '';
             modal2.setAttribute('style', 'display: none');
             modal.setAttribute('style', 'display:block');
         }
