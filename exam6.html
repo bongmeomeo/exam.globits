@@ -18,10 +18,13 @@
 
 
 
+
+
     <!-- Button to Open the Modal -->
     <button type="button" class="btn btn-primary" id="login-system" data-toggle="modal" data-target="#myModal">
   SYSTEM LOGIN 
 </button>
+
 
     <!-- The Modal -->
     <div class="modal" id="myModal">
@@ -62,7 +65,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer" style=" text-align: center;
                 justify-content: center; margin-top: 34px; background-color: #ecf0f1;">
-                    <h6 style="color: #b1aeaf;" onclick="clickForgot()" id="passChange">Forgot Password?</h6>
+                    <h6 style="color: #b1aeaf;" onclick="clickForgot()" id="passChange" class="forgot-login">Forgot Password?</h6>
                 </div>
 
             </div>
@@ -111,7 +114,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer" style=" text-align: center;
                 justify-content: center; margin-top: 34px; background-color: #ecf0f1;">
-                    <h6 style="color: #b1aeaf;" id="backLogin">Login</h6>
+                    <h6 style="color: #b1aeaf;" id="backLogin" class="forgot-login">Login</h6>
                 </div>
 
             </div>
@@ -119,7 +122,11 @@
     </div>
 
 
+
     <script>
+        var script = document.createElement("SCRIPT");
+        script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+        script.type = 'text/javascript';
         var a = 'admin';
         var b = 'admin';
         var needInput = document.getElementById('need-input');
@@ -133,6 +140,8 @@
         var needInput2 = document.getElementById('need-input2');
         var loginBack = document.getElementById('backLogin');
 
+
+        //  compare password and username
         function clickLogin() {
             var userName = document.getElementById("user").value;
             var passWord = document.getElementById("pass").value;
@@ -149,9 +158,16 @@
                 needInput.style.color = 'green';
                 needInput.innerText = ' Login success';
                 loginSystem.innerText = 'LOGIN SUCCESS';
+
+
+                //  when pass and user are success, close modal
+                $('#myModal').modal('hide');
+                $('#myModal2').modal('hide');
+
             }
         }
 
+        //  open modal change pass when click Forgot
         function clickForgot() {
             modal.setAttribute('style', 'display: none');
             modal2.setAttribute('style', 'display:block');
@@ -160,6 +176,7 @@
 
         function clickSave() {
 
+            //  compare old pass and new pass
             var oldPass = document.getElementById('oldpass');
             var newPass = document.getElementById('newpass');
 
@@ -176,6 +193,8 @@
                 modal2.tongle();
             }
         }
+
+        //  back to other modal
         loginBack.onclick = function() {
             needInput2.innerText = '';
             modal2.setAttribute('style', 'display: none');
